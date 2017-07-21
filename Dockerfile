@@ -38,7 +38,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash - \
  && tar zxf $PNGQUANT_VERSION.tar.gz \
  && cd pngquant-$PNGQUANT_VERSION \
  && ./configure && make && make install \
- && npm install svgo uglify-js -g \
+ && npm install svgo uglify-js@2.7.5 -g \
  && rm -fr /tmp/* \
  && rm -rf /var/lib/apt/lists/*
 
