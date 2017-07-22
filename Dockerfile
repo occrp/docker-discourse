@@ -81,7 +81,7 @@ RUN if [ "$DISCOURSE_ADDITIONAL_PLUGINS" != "" ]; then \
     fi
 
 # ugly kludge of a temporary fix for the EmailValidator.email_regex issue
-RUN find ./ -name '*.rb' -exec sed -i -r -e 's/EmailValidator\.email_regex/::\1/g' '{}' \;
+RUN find ./ -name '*.rb' -exec sed -i -r -e 's/(EmailValidator\.email_regex)/::\1/g' '{}' \;
     
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
