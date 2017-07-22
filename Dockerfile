@@ -1,4 +1,4 @@
-FROM rails
+FROM ruby:2.4.1
 
 WORKDIR /usr/src/app
 
@@ -38,7 +38,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash - \
  && tar zxf $PNGQUANT_VERSION.tar.gz \
  && cd pngquant-$PNGQUANT_VERSION \
  && ./configure && make && make install \
- && npm install svgo@0.7.1 uglify-js@2.7.5 -g \
+ && npm install svgo@0.7.1 uglify-js@"<3" -g \
  && rm -fr /tmp/* \
  && rm -rf /var/lib/apt/lists/*
 
