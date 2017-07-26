@@ -82,6 +82,10 @@ RUN if [ "$DISCOURSE_ADDITIONAL_PLUGINS" != "" ]; then \
 
 # ugly kludge of a temporary fix for the EmailValidator.email_regex issue
 RUN find ./ -name '*.rb' -exec sed -i -r -e 's/(EmailValidator\.email_regex)/::\1/g' '{}' \;
-    
+
+COPY ./entrypoint.sh /sbin/entrypoint.sh
+RUN chmod a+x /sbin/entrypoint.sh
+
 EXPOSE 3000
+ENTRYPOINT ["/sbin/entrypoint.sh"]
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
